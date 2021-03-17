@@ -44,11 +44,12 @@
                   <HBox prefHeight="25.0" prefWidth="130.0">
                      <children>
                         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" text="Tours" />
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="41.0" text="+" />
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="28.0" text="-" />
+                        <Button fx:id="addTour" mnemonicParsing="false" prefHeight="25.0" prefWidth="41.0" text="+" />
+                        <Button fx:id="deleteTour" mnemonicParsing="false" prefHeight="25.0" prefWidth="28.0" text="-" />
                         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="27.0" text="[]" />
                      </children>
                   </HBox>
+                  <VBox id="tours" prefHeight="238.0" prefWidth="155.0" />
                </children>
             </VBox>
             <VBox prefHeight="262.0" prefWidth="313.0">
