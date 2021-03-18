@@ -1,4 +1,5 @@
 package sample;
+import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 
 import java.sql.Connection;
@@ -58,8 +59,8 @@ public class PostgreSQLJDBC {
 //            c.close();
 
 
-//
-//            String sql = "DELETE from tourdata where ID = 10;";
+
+//            String sql = "DELETE from tourdata where name = 'Tour 3';";
 //            stmt.executeUpdate(sql);
 //            c.commit();
         } catch (Exception e) {
@@ -69,6 +70,27 @@ public class PostgreSQLJDBC {
 
         return c;
         // System.out.println("Table updated successfully");
+    }
+
+    public static void insertData(String sql) throws SQLException {
+        Connection c = getConnection();
+        Statement stmt = c.createStatement();
+
+
+
+            stmt.executeUpdate(sql);
+
+            stmt.close();
+            c.close();
+    }
+
+    public static ResultSet getData(String sql) throws SQLException {
+        Connection c = getConnection();
+        Statement stmt = c.createStatement();
+        ResultSet rs = stmt.executeQuery( sql);
+
+        return rs;
+
     }
 
 }

@@ -58,7 +58,7 @@
                      <children>
                         <HBox prefHeight="20.0" prefWidth="258.0" style="-fx-padding: 5 0 0 20;">
                            <children>
-                              <Label text="Title:">
+                              <Label fx:id="title" text="Title:">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -75,7 +75,7 @@
                            </children></HBox>
                         <HBox prefHeight="80.0" prefWidth="270.0">
                            <children>
-                              <TextArea prefHeight="79.0" prefWidth="303.0" />
+                              <TextArea fx:id="desc" editable="false" prefHeight="79.0" prefWidth="303.0" />
                            </children></HBox>
                      </children>
                   </VBox>
@@ -91,10 +91,11 @@
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <TableView prefHeight="100.0" prefWidth="308.0">
+                              <TableView fx:id="logs" prefHeight="100.0" prefWidth="308.0">
                                 <columns>
-                                  <TableColumn prefWidth="75.0" text="C1" />
-                                  <TableColumn prefWidth="75.0" text="C2" />
+                                  <TableColumn prefWidth="75.0" text="Date" />
+                                  <TableColumn prefWidth="75.0" text="Duration" />
+                                    <TableColumn prefWidth="75.0" text="Distance" />
                                 </columns>
                               </TableView>
                            </children>
