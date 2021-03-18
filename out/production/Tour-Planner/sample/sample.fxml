@@ -31,7 +31,7 @@
             </Menu>
         </menus>
       </MenuBar>
-      <HBox prefHeight="0.0" prefWidth="462.0">
+      <HBox prefHeight="0.0" prefWidth="462.0" style="-fx-border-color: black;">
          <children>
             <TextField prefHeight="25.0" prefWidth="314.0" text="Search" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="Search" />
@@ -39,9 +39,9 @@
       </HBox>
       <HBox prefHeight="262.0" prefWidth="462.0">
          <children>
-            <VBox prefHeight="262.0" prefWidth="161.0">
+            <VBox prefHeight="262.0" prefWidth="161.0" style="-fx-border-color: black;">
                <children>
-                  <HBox prefHeight="25.0" prefWidth="130.0">
+                  <HBox prefHeight="25.0" prefWidth="130.0" style="-fx-border-color: black;">
                      <children>
                         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" text="Tours" />
                         <Button fx:id="addTour" mnemonicParsing="false" prefHeight="25.0" prefWidth="41.0" text="+" />
@@ -56,7 +56,7 @@
                <children>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <HBox prefHeight="20.0" prefWidth="258.0" style="-fx-padding: 5 0 0 20;">
+                        <HBox prefHeight="20.0" prefWidth="258.0" style="-fx-padding: 5 0 0 20; -fx-border-color: black;">
                            <children>
                               <Label fx:id="title" text="Title:">
                                  <font>
@@ -68,12 +68,12 @@
                               <Insets />
                            </opaqueInsets>
                         </HBox>
-                        <HBox prefHeight="29.0" prefWidth="307.0">
+                        <HBox prefHeight="29.0" prefWidth="307.0" style="-fx-border-color: black;">
                            <children>
                               <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Route" />
                               <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Description" />
                            </children></HBox>
-                        <HBox prefHeight="80.0" prefWidth="270.0">
+                        <HBox prefHeight="80.0" prefWidth="270.0" style="-fx-border-color: black;">
                            <children>
                               <TextArea fx:id="desc" editable="false" prefHeight="79.0" prefWidth="303.0" />
                            </children></HBox>
@@ -81,7 +81,7 @@
                   </VBox>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <HBox prefHeight="25.0" prefWidth="307.0">
+                        <HBox prefHeight="25.0" prefWidth="307.0" style="-fx-border-color: black;">
                            <children>
                               <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="190.0" text="Logs:" />
                               <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="49.0" text="+" />
@@ -89,13 +89,13 @@
                               <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="[]" />
                            </children>
                         </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
+                        <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;">
                            <children>
-                              <TableView fx:id="logs" prefHeight="100.0" prefWidth="308.0">
+                              <TableView id="logs" fx:id="logs" editable="true" prefHeight="100.0" prefWidth="308.0">
                                 <columns>
-                                  <TableColumn prefWidth="75.0" text="Date" />
-                                  <TableColumn prefWidth="75.0" text="Duration" />
-                                    <TableColumn prefWidth="75.0" text="Distance" />
+                                  <TableColumn fx:id="col_date" prefWidth="75.0" text="Date" />
+                                  <TableColumn fx:id="col_duration" prefWidth="75.0" text="Duration" />
+                                    <TableColumn fx:id="col_distance" prefWidth="75.0" text="Distance" />
                                 </columns>
                               </TableView>
                            </children>

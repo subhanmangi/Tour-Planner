@@ -6,23 +6,18 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
-import javafx.scene.control.Button;
 
 import javax.swing.*;
 import java.sql.*;
 
-public class Main extends Application {
+public class View extends Application {
     private int count = 0;
 
     @Override
@@ -34,11 +29,21 @@ public class Main extends Application {
 
         Button addTour = (Button) root.lookup("#addTour");
 
+        TableView logs = (TableView) root.lookup("#logs");
+
+
+
+
+
+
+
+
+
 
         Button deleteTourBtn = (Button) root.lookup("#deleteTour");
 
 
-        Connection c = PostgreSQLJDBC.getConnection();
+        Connection c = Controller.getConnection();
         Statement stmt = c.createStatement();
 
         ResultSet rs = stmt.executeQuery( "SELECT * FROM tourdata;" );
@@ -54,7 +59,7 @@ public class Main extends Application {
 
                 Label title = (Label) root.lookup("#title");
 
-                Connection c = PostgreSQLJDBC.getConnection();
+                Connection c = Controller.getConnection();
 
                 try {
                     Statement stmt = c.createStatement();
@@ -73,12 +78,24 @@ public class Main extends Application {
                     throwables.printStackTrace();
                 }
 
-                TableView logs = (TableView) root.lookup("#logs");
 
-                ObservableList<Log> data = FXCollections.observableArrayList();
+
+                ObservableList<Model> data = FXCollections.observableArrayList();
+
+
+                TableColumn date_col = (TableColumn)logs.getColumns().get(0);
+
+                TableColumn duration_col = (TableColumn)logs.getColumns().get(1);
+                TableColumn distance_col = (TableColumn)logs.getColumns().get(2);
+
+                date_col.setCellValueFactory(new PropertyValueFactory<Model,String>("date"));
+
+                duration_col.setCellValueFactory(new PropertyValueFactory<Model,String>("duration"));
+
+                distance_col.setCellValueFactory(new PropertyValueFactory<Model,String>("distance"));
 
                 try {
-                    ResultSet rs = PostgreSQLJDBC.getData("SELECT * from logs where name = '"+calling.getText()+"';" );
+                    ResultSet rs = Controller.getData("SELECT * from logs where name = '"+calling.getText()+"';" );
 
                     while (rs.next()){
                         String  name = rs.getString("name");
@@ -88,7 +105,7 @@ public class Main extends Application {
 
                         System.out.println("Name: "+name+" date: "+date+" duration: "+duration+" distance: "+distance);
 
-                        data.add(new Log(date,duration,distance));
+                        data.add(new Model(date,duration,distance));
 
 
 
@@ -96,6 +113,8 @@ public class Main extends Application {
                     }
 
                     logs.setItems(data);
+
+
 
 
                 } catch (SQLException throwables) {
@@ -151,7 +170,7 @@ public class Main extends Application {
                 temp.setOnMouseClicked(tourClicked);
                 temp.setId("Tour"+count);
 
-                Connection c = PostgreSQLJDBC.getConnection();
+                Connection c = Controller.getConnection();
                 try {
                     Statement stmt = c.createStatement();
                                 String sql = "INSERT INTO tourdata (NAME,DESCRIPTION,INFO,DISTANCE) "
@@ -182,7 +201,7 @@ public class Main extends Application {
                 System.out.println(deleteTour.getId());
                 System.out.println(deleteTour.getText());
 
-                Connection c = PostgreSQLJDBC.getConnection();
+                Connection c = Controller.getConnection();
                 try {
                     Statement stmt = c.createStatement();
                     String sql = "DELETE from tourdata where name = '" + deleteTour.getText() + "';";
