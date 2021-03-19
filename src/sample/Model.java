@@ -14,6 +14,18 @@ public class Model {
         this.distance = distance;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public String getDistance() {
+        return distance;
+    }
+
     @Override
     public String toString() {
         return "Log{" +
